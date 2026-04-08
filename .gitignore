@@ -1,0 +1,16 @@
+# Maven - ignorar binários e artefatos gerados
+target/*
+
+# IDEs (VS Code / IntelliJ / Eclipse)
+.settings/
+.project
+.classpath
+.factorypath
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# Sistema operacional
+Thumbs.db
+.DS_Store
