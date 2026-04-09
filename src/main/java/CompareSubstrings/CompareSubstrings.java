@@ -1,4 +1,4 @@
-package Calendar;
+package CompareSubstrings;
 
 public class CompareSubstrings {
     public String getSmallestAndLargest(String s, int k) {

@@ -1,4 +1,4 @@
-package Calendar;
+package CompareSubstrings;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
