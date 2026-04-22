@@ -57,14 +57,20 @@ public class ValidateIPTest {
     }
 
     @Test
-    @DisplayName("Deve rejeitar valor nulo")
-    public void testNull() {
-        assertFalse(validator.validate(null));
-    }
-
-    @Test
     @DisplayName("Deve rejeitar IP sem pontos")
     public void testDotsIP(){
         assertFalse(validator.validate("19216810196"));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se o valor for nulo")
+    public void testNull() {
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(null));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se o valor for uma string vazia")
+    public void testStringVazia() {
+        assertThrows(IllegalArgumentException.class, () -> validator.validate(""));
     }
 }
