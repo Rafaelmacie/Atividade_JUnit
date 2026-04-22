@@ -9,7 +9,7 @@ public class CompareSubstringsTest {
     private final CompareSubstrings cs = new CompareSubstrings();
 
     @Test
-    @DisplayName("Deve retornar a menor e maior substring do exemplo (welcometojava, 3)")
+    @DisplayName("Deve retornar a menor e maior substring")
     public void testExemploEnunciado() {
         String resultadoEsperado = "ava" + "\n" + "wel";
         assertEquals(resultadoEsperado, cs.getSmallestAndLargest("welcometojava", 3));
@@ -18,17 +18,45 @@ public class CompareSubstringsTest {
     @Test
     @DisplayName("Deve funcionar com k igual ao tamanho total da string")
     public void testTamanhoKIgualString() {
-        String s = "java";
         String resultadoEsperado = "java" + "\n" + "java";
-        assertEquals(resultadoEsperado, cs.getSmallestAndLargest(s, 4));
+        assertEquals(resultadoEsperado, cs.getSmallestAndLargest("java", 4));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se k for maior que o tamanho da string")
+    public void testKMaiorQueString() {
+        assertThrows(IllegalArgumentException.class, () -> cs.getSmallestAndLargest("java", 5));
     }
 
     @Test
     @DisplayName("Deve diferenciar maiúsculas de minúsculas (Ordem ASCII)")
     public void testDiferencaCase() {
-        // Na tabela ASCII, letras maiúsculas vem antes de minúsculas
-        String s = "AaBC";
         String resultadoEsperado = "A" + "\n" + "a";
-        assertEquals(resultadoEsperado, cs.getSmallestAndLargest(s, 1));
+        assertEquals(resultadoEsperado, cs.getSmallestAndLargest("AaBC", 1));
     }
+
+    @Test
+    @DisplayName("Deve lançar exceção se a string for nula")
+    public void testStringNula() {
+        assertThrows(IllegalArgumentException.class, () -> cs.getSmallestAndLargest(null, 3));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se a string for vazia")
+    public void testStringVazia() {
+        assertThrows(IllegalArgumentException.class, () -> cs.getSmallestAndLargest("", 3));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se k for zero")
+    public void testKZero() {
+        assertThrows(IllegalArgumentException.class, () -> cs.getSmallestAndLargest("java", 0));
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção se k for negativo")
+    public void testKNegativo() {
+        assertThrows(IllegalArgumentException.class, () -> cs.getSmallestAndLargest("java", -2));
+    }
+
 }

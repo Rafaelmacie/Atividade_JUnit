@@ -1,23 +1,33 @@
 package CompareSubstrings;
 
 public class CompareSubstrings {
+
     public String getSmallestAndLargest(String s, int k) {
-        // Inicializamos a menor e a maior com a primeira substring possível
+
+        if (s == null || s.isEmpty()) {
+            throw new IllegalArgumentException("A string não pode ser nula ou vazia.");
+        }
+
+        if (k <= 0) {
+            throw new IllegalArgumentException("O valor de k deve ser maior que zero.");
+        }
+
+        if (k > s.length()) {
+            throw new IllegalArgumentException(
+                    "O valor de k (" + k + ") não pode ser maior que o tamanho da string (" + s.length() + ").");
+        }
+
         String substring = s.substring(0, k);
         String smallest = substring;
         String largest = substring;
 
-        // Percorremos a string original
-        // O limite é s.length() - k para não estourar o índice no final
         for (int i = 1; i <= s.length() - k; i++) {
             substring = s.substring(i, i + k);
 
-            // Se a substring atual for menor que a 'smallest', ela assume o lugar
             if (substring.compareTo(smallest) < 0) {
                 smallest = substring;
             }
 
-            // Se a substring atual for maior que a 'largest', ela assume o lugar
             if (substring.compareTo(largest) > 0) {
                 largest = substring;
             }

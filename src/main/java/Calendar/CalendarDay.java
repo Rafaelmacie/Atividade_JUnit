@@ -9,10 +9,8 @@ public class CalendarDay {
     public String findDay(int day, int month, int year) {
         validateDate(day, month, year);
 
-        // API usada para encontrar o dia da semana
         LocalDate date = LocalDate.of(year, month, day);
 
-        // Retorna o dia da semana em português (ex: SEGUNDA-FEIRA)
         return date.getDayOfWeek()
                 .getDisplayName(TextStyle.FULL, Locale.forLanguageTag("pt-BR"))
                 .toUpperCase();
@@ -51,9 +49,7 @@ public class CalendarDay {
         }
     }
 
-    // Lógica para verificar se o ano é bissexto
     private boolean isLeapYear(int year) {
-        // Regra: divisível por 4, mas não por 100, exceto se for divisível por 400
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
 }

@@ -8,7 +8,7 @@ public class CalendarDayTest {
 
     private final CalendarDay cd = new CalendarDay();
 
-    // --- TESTES DE MESES COM 31 DIAS ---
+    // Testes de meses com 31 dias
 
     @Test
     @DisplayName("Deve aceitar o dia 31 em Janeiro")
@@ -22,7 +22,7 @@ public class CalendarDayTest {
         assertThrows(IllegalArgumentException.class, () -> cd.findDay(32, 1, 2024));
     }
 
-    // --- TESTES DE MESES COM 30 DIAS ---
+    // Testes de meses com 30 dias
 
     @Test
     @DisplayName("Deve aceitar o dia 30 em Abril")
@@ -36,7 +36,7 @@ public class CalendarDayTest {
         assertThrows(IllegalArgumentException.class, () -> cd.findDay(31, 4, 2024));
     }
 
-    // --- TESTES DE FEVEREIRO (BISSEXTO) ---
+    // Testes de Fevereiro em ano bissexto e em ano comum
 
     @Test
     @DisplayName("Deve aceitar 29 de Fevereiro em ano bissexto")
@@ -50,7 +50,7 @@ public class CalendarDayTest {
         assertThrows(IllegalArgumentException.class, () -> cd.findDay(29, 2, 2023));
     }
 
-    // --- TESTES DE VALIDAÇÃO DE MÊS ---
+    // Testes de validação do mês
 
     @Test
     @DisplayName("Deve rejeitar mês menor que 1")
@@ -64,7 +64,7 @@ public class CalendarDayTest {
         assertThrows(IllegalArgumentException.class, () -> cd.findDay(1, 13, 2024));
     }
 
-    // --- TESTES DE VALIDAÇÃO DE ANO ---
+    // Testes de validação do ano
 
     @Test
     @DisplayName("Deve rejeitar ano igual a zero")
@@ -77,4 +77,19 @@ public class CalendarDayTest {
     public void testAnoNegativoInvalido() {
         assertThrows(IllegalArgumentException.class, () -> cd.findDay(1, 1, -2024));
     }
+
+    // Testes de dia negativo e igual a 0
+
+    @Test
+    @DisplayName("Deve rejeitar dia igual a 0")
+    public void testDia0() {
+        assertThrows(IllegalArgumentException.class, () -> cd.findDay(0, 1, 2024));
+    }
+
+    @Test
+    @DisplayName("Deve rejeitar dia menor que 0")
+    public void testDiaNegativo() {
+        assertThrows(IllegalArgumentException.class, () -> cd.findDay(-9, 1, 2024));
+    }
+
 }
